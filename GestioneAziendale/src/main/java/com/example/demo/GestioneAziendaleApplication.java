@@ -8,7 +8,7 @@ public class GestioneAziendaleApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GestioneAziendaleApplication.class, args);
-		System.out.println("DIO PORCO");
+		System.out.println("DIO ERMELLINO");
 	}
 
 }
