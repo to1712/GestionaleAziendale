@@ -1,14 +1,20 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.io.IOException;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
-@RestController
-public class MyController {
-
-    @GetMapping("/")
-    public String home() {
-
-        return "Home page";
-    }
+@WebServlet("/")
+public class MyController extends HttpServlet {
+	@Override
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+		RequestDispatcher dispacher = req.getRequestDispatcher("views/index.html");
+		dispacher.forward(req, resp);
+	}
 }
