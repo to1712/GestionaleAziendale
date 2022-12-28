@@ -3,7 +3,6 @@ package com.gestione_aziendale.persistenza;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 import com.gestione_aziendale.persistenza.dao.UtenteDao;
 import com.gestione_aziendale.persistenza.dao.postgres.UtenteDaoPostgres;
 
@@ -22,11 +21,13 @@ public class DBManager {
 	public Connection getConnession()
 	{
 		if(conn == null)
+		{
 			try {
 				conn = DriverManager.getConnection("jdbc:postgresql://localhost:5433/", "postgres", "07092000");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
 		return conn;
 	}
 	
