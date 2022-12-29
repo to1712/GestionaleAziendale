@@ -22,6 +22,8 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
+		System.out.println(email);
+		System.out.println(password);
 		UtenteDao utenteDao = DBManager.getInstance().getUtenteDao();
 		Utente utente = utenteDao.findByPrimaryKey(email);
 		boolean login;

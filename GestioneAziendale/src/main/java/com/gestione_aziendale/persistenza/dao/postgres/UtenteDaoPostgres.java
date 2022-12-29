@@ -23,7 +23,7 @@ public class UtenteDaoPostgres implements UtenteDao {
 	public List<Utente> findAll() {
 		
 		List<Utente> utenti = new ArrayList<Utente>();
-		String query = "SELECT * FROM utenti";
+		String query = "SELECT * FROM utente";
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(query);
@@ -47,7 +47,7 @@ public class UtenteDaoPostgres implements UtenteDao {
 	@Override
 	public Utente findByPrimaryKey(String email) {
 		Utente utente = null;
-		String query = "SELECT * FROM utenti WHERE email=?";
+		String query = "SELECT * FROM utente WHERE email=?";
 		try {
 			PreparedStatement st = conn.prepareStatement(query);
 			st.setString(1, email);
@@ -71,7 +71,7 @@ public class UtenteDaoPostgres implements UtenteDao {
 	@Override
 	public void saveOrUpdate(Utente utente) {
 		if (findByPrimaryKey(utente.getEmail()) == null) {
-			String queryInsert = "INSERT INTO utenti VALUES (?, ?, ?, ?, ?)";
+			String queryInsert = "INSERT INTO utente VALUES (?, ?, ?, ?, ?)";
 			
 			PreparedStatement st;
 			try {
@@ -88,7 +88,7 @@ public class UtenteDaoPostgres implements UtenteDao {
 				e.printStackTrace();
 			}
 		}else {
-			String queryUpdate = "UPDATE utenti SET nome=?, cognome = ?, password=?, ruolo=?, stipendio=? WHERE email=?";
+			String queryUpdate = "UPDATE utente SET nome=?, cognome = ?, password=?, ruolo=?, stipendio=? WHERE email=?";
 			PreparedStatement st;
 			try {
 				st = conn.prepareStatement(queryUpdate);
@@ -109,7 +109,7 @@ public class UtenteDaoPostgres implements UtenteDao {
 
 	@Override
 	public void delete(Utente utente) {
-		String query = "DELETE FROM utenti WHERE email=?";		
+		String query = "DELETE FROM utente WHERE email=?";		
 		try {
 			PreparedStatement st = conn.prepareStatement(query);
 			st.setString(1, utente.getEmail());
