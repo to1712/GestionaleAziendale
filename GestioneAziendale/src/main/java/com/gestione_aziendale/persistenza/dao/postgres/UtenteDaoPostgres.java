@@ -47,7 +47,7 @@ public class UtenteDaoPostgres implements UtenteDao {
 	@Override
 	public Utente findByPrimaryKey(String email) {
 		Utente utente = null;
-		String query = "SELECT * FROM utente WHERE email=?";
+		String query = "SELECT * FROM utenti WHERE email=?";
 		try {
 			PreparedStatement st = conn.prepareStatement(query);
 			st.setString(1, email);

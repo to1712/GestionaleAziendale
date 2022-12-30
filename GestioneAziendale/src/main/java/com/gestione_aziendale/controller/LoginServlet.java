@@ -1,8 +1,9 @@
 package com.gestione_aziendale.controller;
 
 import java.io.IOException;
-
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.gestione_aziendale.persistenza.DBManager;
@@ -12,31 +13,33 @@ import com.gestione_aziendale.persistenza.model.Utente;
 @RestController
 public class LoginServlet {
 	@PostMapping("/applicazioneAzienda/doLogin")
-	public String doLogin(HttpServletResponse resp,String email,String password) throws IOException
+	public void doLogin(HttpServletRequest req, HttpServletResponse resp, String email, String password) throws IOException
 	{
 		UtenteDao udao = DBManager.getInstance().getUtenteDao();
 		Utente utente = udao.findByPrimaryKey(email);
+		
 		boolean logged;
-		if (utente == null) {
+		if(utente == null)
 			logged = false;
-		}else {
+		else {
 			if (password.equals(utente.getPassword())) {
 				logged = true;
-				/*HttpSession session = req.getSession();
+				HttpSession session = req.getSession();
 				session.setAttribute("user", utente);
 				session.setAttribute("sessionId", session.getId());
 				
-				req.getServletContext().setAttribute(session.getId(), session);*/
+				req.getServletContext().setAttribute(session.getId(), session);
 			}else {
 				logged = false;
 			}
 		}
+		
+		
 		if (logged) {
-			resp.sendRedirect("/applicazioneAzienda/index.html");
+			resp.sendRedirect("/applicazioneAzienda");
 		}else {
 			resp.sendRedirect("/applicazioneAzienda/404.html");
 		}
-		return null;
 	}
 }	
 	
