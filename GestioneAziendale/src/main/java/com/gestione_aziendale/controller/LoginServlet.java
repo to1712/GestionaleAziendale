@@ -60,7 +60,7 @@ import com.gestione_aziendale.persistenza.DBManager;
 import com.gestione_aziendale.persistenza.dao.UtenteDao;
 import com.gestione_aziendale.persistenza.model.Utente;
 
-@WebServlet(urlPatterns={"/applicazioneAzienda/doLogin","/doLogin"})
+@WebServlet("/applicazioneAzienda/doLogin")
 public class LoginServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -87,9 +87,9 @@ public class LoginServlet extends HttpServlet{
 		if (logged) {
 //			RequestDispatcher dispacher = req.getRequestDispatcher("views/index.html");
 //			dispacher.forward(req, resp);
-			resp.sendRedirect("/applicazioneAzienda");
+			resp.sendRedirect("/index.html");
 		}else {
-			resp.sendRedirect("/applicazioneAzienda/404.html");
+			resp.sendRedirect("/404.html");
 		}
 		
 	}
