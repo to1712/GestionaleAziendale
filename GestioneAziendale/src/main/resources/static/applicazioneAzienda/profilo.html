@@ -30,8 +30,9 @@
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/applicazioneAzienda/profilo.html">Profilo</a></li>
+                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a th:if="${session.user != null}" class="dropdown-item" href="doLogout">Logout</a></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -42,12 +43,12 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Home
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-industry"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Filiali
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -58,16 +59,34 @@
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
-                                Stipendi
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                Pages
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="layout-static.html">Tesoreria</a>
-                                    <a class="nav-link" href="layout-static.html">Logistica</a>
-                                    <a class="nav-link" href="layout-static.html">Amministrazione</a>
-                                    
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        Authentication
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="login.html">Login</a>
+                                            <a class="nav-link" href="register.html">Register</a>
+                                            <a class="nav-link" href="password.html">Forgot Password</a>
+                                        </nav>
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        Error
+                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                    </a>
+                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                        <nav class="sb-sidenav-menu-nested nav">
+                                            <a class="nav-link" href="401.html">401 Page</a>
+                                            <a class="nav-link" href="404.html">404 Page</a>
+                                            <a class="nav-link" href="500.html">500 Page</a>
+                                        </nav>
+                                    </div>
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Addons</div>
@@ -90,12 +109,55 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Home</h1>
+                        <h1 class="mt-4">Profilo</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Home</li>
+                            <li class="breadcrumb-item active">Profilo</li>
                         </ol>
                         <!--<section class="vh-100" style="background-color: #f4f5f7;">  -->
-						  
+						  <div class="container py-15 h-100">
+						    <div class="row d-flex justify-content-center align-items-center h-100">
+						      <div class="col col-lg-16 mb-4 mb-lg-0">
+						        <div class="card mb-3" style="border-radius: .5rem;">
+						          <div class="row g-0">
+						            <div class="col-md-4 gradient-custom text-center text-white"
+						              style="border-top-left-radius: .5rem; border-bottom-left-radius: .5rem;">
+						              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+						                alt="Avatar" class="img-fluid my-5" style="width: 80px;" />
+						              <h5>Antonio puzza</h5>
+						              <p>pizzaiolo</p>
+						            </div>
+						            <div class="col-md-8">
+						              <div class="card-body p-4">
+						                <h6>Informazioni</h6>
+						                <hr class="mt-0 mb-4">
+						                <div class="row pt-1">
+						                  <div class="col-6 mb-3">
+						                    <h6>Email</h6>
+						                    <p class="text-muted">puzzo@culo.com</p>
+						                  </div>
+						                  <div class="col-6 mb-3">
+						                    <h6>Telefono</h6>
+						                    <p class="text-muted">123 456 789</p>
+						                  </div>
+						                </div>
+						                <hr class="mt-0 mb-4">
+						                <div class="row pt-1">
+						                  <div class="col-6 mb-3">
+						                    <h6>Sede</h6>
+						                    <p class="text-muted">Lorem ipsum</p>
+						                  </div>
+						                  <div class="col-6 mb-3">
+						                    <h6>Stipendio</h6>
+						                    <p class="text-muted">0.20£</p>
+						                  </div>
+						                </div>
+						              </div>
+						            </div>
+						          </div>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
 <!--</section>  -->
                         <!--  
                         <div class="row">
