@@ -1,3 +1,6 @@
 /.metadata/
+<<<<<<< HEAD
 GestioneAziendale/src/main/java/com/gestione_aziendale/persistenza/DBManager.java
 GestioneAziendale/src/main/java/com/gestione_aziendale/persistenza/DBManager.java
+=======
+>>>>>>> parent of 7f7c1a2 (Merge branch 'main' of https://github.com/to1712/GestionaleAziendale)
