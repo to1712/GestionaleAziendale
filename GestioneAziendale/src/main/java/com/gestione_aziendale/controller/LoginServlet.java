@@ -1,18 +1,20 @@
 package com.gestione_aziendale.controller;
 
 import java.io.IOException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.gestione_aziendale.persistenza.DBManager;
 import com.gestione_aziendale.persistenza.dao.UtenteDao;
 import com.gestione_aziendale.persistenza.model.Utente;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 @RestController
 public class LoginServlet {
-	@PostMapping("/applicazioneAzienda/doLogin")
+	@PostMapping("applicazioneAzienda/doLogin")
 	public void doLogin(HttpServletRequest req, HttpServletResponse resp, String email, String password) throws IOException
 	{
 		UtenteDao udao = DBManager.getInstance().getUtenteDao();
@@ -36,7 +38,7 @@ public class LoginServlet {
 		
 		
 		if (logged) {
-			resp.sendRedirect("/applicazioneAzienda");
+			resp.sendRedirect("home.html");
 		}else {
 			resp.sendRedirect("/applicazioneAzienda/404.html");
 		}

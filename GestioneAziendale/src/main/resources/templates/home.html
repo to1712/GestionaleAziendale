@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -31,7 +31,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="/applicazioneAzienda/profilo.html">Profilo</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a th:if="${session.user != null}" class="dropdown-item" href="doLogout">Logout</a></li>
+                        <li><a  th:text="ciaoooo" th:if="${session.user != null}" class="dropdown-item" href="doLogout">Logout</a></li>
                     </ul>
                 </li>
             </ul>

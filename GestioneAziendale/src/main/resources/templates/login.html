@@ -1,3 +1,4 @@
+<html xmlns:th="http://www.thymeleaf.org"></html>
 <head>
 	<title>Login</title>
 	<link href="css/login.css" rel="stylesheet" />
@@ -16,7 +17,8 @@
 					<i class="login__icon fas fa-lock"></i>
 					<input type="password" class="login__input" placeholder="Password" id="password" name = "password">
 				</div>
-					<button type="submit" class="button login__submit">
+				<a th:href="/home.html">ciao</a>
+					<button type="submit" class="button login__submit" >
 						Login
 	  					<i class="button__icon fas fa-chevron-right"></i>
 					</button>	
