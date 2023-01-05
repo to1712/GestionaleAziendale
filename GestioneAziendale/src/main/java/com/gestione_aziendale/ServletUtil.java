@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class ServletUtil {
-	@RequestMapping(value = "/views/**", method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value = "/views/*", method = {RequestMethod.GET, RequestMethod.POST})
 	public String templateHandler(HttpServletRequest request) {
 		String resource = request.getRequestURI().substring("/views/".length());
 		resource = resource.substring(0, resource.indexOf(".html"));
