@@ -39,7 +39,7 @@ public class LoginServlet {
 		
 		
 		if (logged) {
-			resp.sendRedirect("/views/home.html");
+			resp.sendRedirect("/views");
 		}else {
 			resp.sendRedirect("/applicazioneAzienda/404.html");
 		}

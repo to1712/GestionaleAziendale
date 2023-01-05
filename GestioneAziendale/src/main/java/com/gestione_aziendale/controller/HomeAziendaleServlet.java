@@ -16,8 +16,7 @@ public class HomeAziendaleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		System.out.println(session.getId());
-
-		resp.sendRedirect("/views/home.html");
+		resp.sendRedirect("views/home.html");
 	}
 	/*
 	@GetMapping("")
