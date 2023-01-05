@@ -1,21 +1,22 @@
 package com.gestione_aziendale.controller;
 
 import java.io.IOException;
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.gestione_aziendale.persistenza.DBManager;
 import com.gestione_aziendale.persistenza.dao.UtenteDao;
 import com.gestione_aziendale.persistenza.model.Utente;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 public class LoginServlet {
-	@PostMapping("applicazioneAzienda/doLogin")
-	public void doLogin(HttpServletRequest req, HttpServletResponse resp, String email, String password) throws IOException
+	@PostMapping("/doLogin")
+	public void doLogin(HttpServletRequest req, HttpServletResponse resp, String email, String password) throws IOException, ServletException
 	{
 		UtenteDao udao = DBManager.getInstance().getUtenteDao();
 		Utente utente = udao.findByPrimaryKey(email);
@@ -38,7 +39,7 @@ public class LoginServlet {
 		
 		
 		if (logged) {
-			resp.sendRedirect("home.html");
+			resp.sendRedirect("/views/home.html");
 		}else {
 			resp.sendRedirect("/applicazioneAzienda/404.html");
 		}
@@ -51,13 +52,13 @@ public class LoginServlet {
 /*
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import com.gestione_aziendale.persistenza.DBManager;
 import com.gestione_aziendale.persistenza.dao.UtenteDao;
 import com.gestione_aziendale.persistenza.model.Utente;
