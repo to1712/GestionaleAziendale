@@ -5,8 +5,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div>
-		<a th:href="|http://localhost:4200/${session.user.ruolo}|">link</a>
-	</div>
+	<form th:action="|http://localhost:4200/${session.user.ruolo}|">
+		<input type="hidden" name="Jsessionid" th:value="${session.sessioId}" />
+		<input type="submit" value="link" />
+	</form>
+	
 </body>
 </html>
