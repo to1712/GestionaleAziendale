@@ -16,6 +16,9 @@ public class HomeAziendaleServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		System.out.println(session.getId());
+		UtentiServizi utenti=new UtentiServizi();
+		utenti.setSession(session);
+		
 		resp.sendRedirect("views/welcome.html");
 	}
 	/*
