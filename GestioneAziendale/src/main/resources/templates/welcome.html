@@ -13,17 +13,17 @@
 		<input type="hidden" name="Jsessionid" th:value="|${session.sessionId}|" />
 		<input type="submit" id="go" />
 		<script>
-		setTimeout(function(){document.getElementById("go").click();},3000);
+		setTimeout(function(){document.getElementById("go").click();},30000000);
 		document.getElementById("go").addEventListener("click", function(){}); 
 		</script>
 	</form>
-	<div  style="margin-left:45%; margin-top:180px; align-items:center; justify-content:center;">
-	<a>BENVENUTO</a>
-	<p th:text="${session.user.nome}"></p>
-	<p th:text="${session.user.ruolo}"></p>
-	</div>
+	 <div class="container" style="margin-top:10px; align-items:center; justify-content:center;" >
+      <div class="upper">Benvenuto</div>
+      <div class="lower">Benvenuto</div>
+      <div class="inside" th:text="${session.user.nome}"></div>
+    </div>
 <div class="container">
-    <div class="row" style="margin-top:10px">
+    <div class="row">
         <div class="col-md-12">
             <div class="loader">
                 <div class="loader-inner">
