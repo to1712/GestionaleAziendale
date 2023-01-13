@@ -4,7 +4,7 @@ body {
 .loader{
     width: 150px;
     height: 150px;
-    margin: 40px auto;
+    margin: 60px auto;
     transform: rotate(-45deg);
     font-size: 0;
     line-height: 0;
@@ -158,7 +158,7 @@ body {
   color: #fff;
   overflow: hidden;
   z-index: 3;
-  animation: moveUp 1.5s ease-in-out 1;
+  animation: moveUp 6s ease-in-out 1;
   background: linear-gradient(90deg, #3A2D4E, #5A416C);
 }
 
@@ -170,7 +170,7 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   z-index: 1;
-  animation: moveDown 1.5s ease-in-out 1;
+  animation: moveDown 6s ease-in-out 1;
 }
 
 .inside {

@@ -5,6 +5,7 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!--  <script src="js/welcome.js"></script>-->
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
@@ -13,14 +14,19 @@
 		<input type="hidden" name="Jsessionid" th:value="|${session.sessionId}|" />
 		<input type="submit" id="go" />
 		<script>
-		setTimeout(function(){document.getElementById("go").click();},30000000);
-		document.getElementById("go").addEventListener("click", function(){}); 
+			setTimeout(function(){document.getElementById("go").click();},6000);
+			document.getElementById("go").addEventListener("click", function(){}); 
 		</script>
 	</form>
 	 <div class="contain" >
-      <div class="upper">Benvenuto</div>
-      <div class="lower">Benvenuto</div>
-      <div class="inside" th:text="${session.user.nome}"></div>
+      	<div class="upper">Benvenuto</div>
+      	<div class="lower">Benvenuto</div>
+      	<div class="inside" id="nome" th:text="${session.user.nome}"></div>
+		<div class="inside" id="ruolo" th:if="${session.user.ruolo == 'mns'}" data-ruoli="Master"></div>
+		<div class="inside" id="ruolo" th:if="${session.user.ruolo == 'it'}" data-ruoli="Amministrazione"></div>
+		<div class="inside" id="ruolo" th:if="${session.user.ruolo == 'tsr'}" data-ruoli="Tesoreria"></div>
+		<div class="inside" id="ruolo" th:if="${session.user.ruolo == 'lgs'}" data-ruoli="Logistica"></div>
+		<script src="/js/welcome.js"></script>
     </div>
 <div>
     <div class="row">
