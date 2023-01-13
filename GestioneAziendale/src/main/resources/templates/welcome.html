@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+<link href="/css/welcome.css" rel="stylesheet" >
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
 	<form th:action="|http://localhost:4200/${session.user.ruolo}|">
 		<input type="hidden" name="Jsessionid" th:value="|${session.sessionId}|" />
-		<input type="submit" value="link" />
+		<input type="submit" id="go" />
+		<script>
+		setTimeout(function(){document.getElementById("go").click();},3000);
+		document.getElementById("go").addEventListener("click", function(){}); 
+		</script>
 	</form>
-	<audio controls>
-  	<source src="/m.mp3" type="audio/mpeg">
-	</audio>
+	<div  style="margin-left:45%; margin-top:180px; align-items:center; justify-content:center;">
+	<a>BENVENUTO</a>
+	<p th:text="${session.user.nome}"></p>
+	<p th:text="${session.user.ruolo}"></p>
+	</div>
+<div class="container">
+    <div class="row" style="margin-top:10px">
+        <div class="col-md-12">
+            <div class="loader">
+                <div class="loader-inner">
+                    <div class="loading one"></div>
+                </div>
+                <div class="loader-inner">
+                    <div class="loading two"></div>
+                </div>
+                <div class="loader-inner">
+                    <div class="loading three"></div>
+                </div>
+                <div class="loader-inner">
+                    <div class="loading four"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
