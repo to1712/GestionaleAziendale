@@ -28,6 +28,7 @@ public class Filiale {
 	private float spese_nov;
 	private float spese_dic;
 	private float bilancio;
+	
 	public String getId() {
 		return id;
 	}

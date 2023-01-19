@@ -4,7 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import com.gestione_aziendale.persistenza.dao.FilialeDao;
+import com.gestione_aziendale.persistenza.dao.FornitoreDao;
 import com.gestione_aziendale.persistenza.dao.UtenteDao;
+import com.gestione_aziendale.persistenza.dao.postgres.FilialeDaoPostgres;
+import com.gestione_aziendale.persistenza.dao.postgres.FornitoreDaoPostgres;
 import com.gestione_aziendale.persistenza.dao.postgres.UtenteDaoPostgres;
 
 public class DBManager {
@@ -23,7 +27,7 @@ public class DBManager {
 	{
 		if(conn == null)
 			try {
-				conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "juventus17");
+				conn = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "1234");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -32,6 +36,14 @@ public class DBManager {
 	
 	public UtenteDao getUtenteDao() {
 		return new UtenteDaoPostgres(getConnession());
+	}
+	
+	public FornitoreDao getFornitoreDao() {
+		return new FornitoreDaoPostgres(getConnession());
+	}
+	
+	public FilialeDao getFilialeDao() {
+		return new FilialeDaoPostgres(getConnession());
 	}
 	
 }
