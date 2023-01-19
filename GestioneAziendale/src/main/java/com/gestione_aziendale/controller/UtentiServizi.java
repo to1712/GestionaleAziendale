@@ -1,5 +1,7 @@
 package com.gestione_aziendale.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +27,17 @@ public class UtentiServizi {
 			return utente;
 		}
 		return null;
+		
 	}
+	@PostMapping("/getUtenti")
+	public List<Utente> getUtenti(HttpServletRequest req ) {
+			
+			List<Utente> utenti=DBManager.getInstance().getUtenteDao().findAll();
+			//System.out.println(HomeAziendaleServlet.s);
+			return utenti;
+		
+	}
+	
 	
 
 }

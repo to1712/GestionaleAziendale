@@ -22,8 +22,8 @@
       	<div class="upper">Benvenuto</div>
       	<div class="lower">Benvenuto</div>
       	<div class="inside" id="nome" th:text="${session.user.nome}"></div>
-		<div class="inside" id="ruolo" th:if="${session.user.ruolo == 'mns'}" data-ruoli="Master"></div>
-		<div class="inside" id="ruolo" th:if="${session.user.ruolo == 'it'}" data-ruoli="Amministrazione"></div>
+		<div class="inside" id="ruolo" th:if="${session.user.ruolo == 'it'}" data-ruoli="Master"></div>
+		<div class="inside" id="ruolo" th:if="${session.user.ruolo == 'mns'}" data-ruoli="Amministrazione"></div>
 		<div class="inside" id="ruolo" th:if="${session.user.ruolo == 'tsr'}" data-ruoli="Tesoreria"></div>
 		<div class="inside" id="ruolo" th:if="${session.user.ruolo == 'lgs'}" data-ruoli="Logistica"></div>
 		

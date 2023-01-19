@@ -23,7 +23,7 @@ public class UtenteDaoPostgres implements UtenteDao {
 	public List<Utente> findAll() {
 		
 		List<Utente> utenti = new ArrayList<Utente>();
-		String query = "SELECT * FROM utente";
+		String query = "SELECT * FROM utenti";
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(query);
