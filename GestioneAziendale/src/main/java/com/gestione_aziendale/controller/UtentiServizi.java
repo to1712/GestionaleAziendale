@@ -1,23 +1,21 @@
 package com.gestione_aziendale.controller;
 
 import java.util.List;
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.gestione_aziendale.persistenza.DBManager;
 import com.gestione_aziendale.persistenza.model.Filiale;
 import com.gestione_aziendale.persistenza.model.Fornitore;
 import com.gestione_aziendale.persistenza.model.Magazzino;
+import com.gestione_aziendale.persistenza.model.Spedizione;
 import com.gestione_aziendale.persistenza.model.Utente;
-
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
 public class UtentiServizi {
+	
 	@PostMapping("/getUtente")
 	public Utente getUtente(HttpServletRequest req ) {
 		String [] sessionIdParam=req.getQueryString().split("&")[0].split("=");
@@ -32,6 +30,7 @@ public class UtentiServizi {
 		return null;
 		
 	}
+	
 	@PostMapping("/getUtenti")
 	public List<Utente> getUtenti(HttpServletRequest req ) {
 			
@@ -66,8 +65,11 @@ public class UtentiServizi {
 			return magazzino;
 	}
 	
-	
-	
-	
-
+	@PostMapping("/getSpedizioni")
+	public List<Spedizione> getSpedizione(HttpServletRequest req ) {
+			
+			List<Spedizione> spedizione = DBManager.getInstance().getSpedizioneDao().findAll();
+			//System.out.println(HomeAziendaleServlet.s);
+			return spedizione;
+	}
 }
