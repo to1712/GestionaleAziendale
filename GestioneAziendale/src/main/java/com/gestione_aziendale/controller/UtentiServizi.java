@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gestione_aziendale.persistenza.DBManager;
 import com.gestione_aziendale.persistenza.model.Filiale;
 import com.gestione_aziendale.persistenza.model.Fornitore;
+import com.gestione_aziendale.persistenza.model.Magazzino;
 import com.gestione_aziendale.persistenza.model.Utente;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -56,6 +57,16 @@ public class UtentiServizi {
 			//System.out.println(HomeAziendaleServlet.s);
 			return filiali;
 	}
+	
+	@PostMapping("/getMagazzino")
+	public List<Magazzino> getMagazzino(HttpServletRequest req ) {
+			
+			List<Magazzino> magazzino = DBManager.getInstance().getMagazzinoDao().findAll();
+			//System.out.println(HomeAziendaleServlet.s);
+			return magazzino;
+	}
+	
+	
 	
 	
 

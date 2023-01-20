@@ -30,6 +30,7 @@ public class MagazzinoDaoPostgres implements MagazzinoDao {
 				Magazzino magazzino = new Magazzino();
 				magazzino.setId_prodotto(rs.getString("id_prodotto"));
 				magazzino.setId_fornitore(rs.getString("id_fornitore"));
+				magazzino.setQta(rs.getInt("qta"));
 				
 				magazzini.add(magazzino);
 			}
@@ -54,6 +55,7 @@ public class MagazzinoDaoPostgres implements MagazzinoDao {
 				magazzino = new Magazzino();
 				magazzino.setId_prodotto(rs.getString("id_prodotto"));
 				magazzino.setId_fornitore(rs.getString("id_fornitore"));
+				magazzino.setQta(rs.getInt("qta"));
 			}
 			
 			} catch (SQLException e) {
@@ -77,6 +79,7 @@ public class MagazzinoDaoPostgres implements MagazzinoDao {
 				magazzino = new Magazzino();
 				magazzino.setId_prodotto(rs.getString("id_prodotto"));
 				magazzino.setId_fornitore(rs.getString("id_fornitore"));
+				magazzino.setQta(rs.getInt("qta"));
 			}
 			
 			} catch (SQLException e) {
