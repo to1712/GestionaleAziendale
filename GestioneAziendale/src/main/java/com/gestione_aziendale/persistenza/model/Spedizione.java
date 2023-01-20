@@ -6,6 +6,16 @@ public class Spedizione {
 	String filiale;
 	int qta;
 	
+	public Spedizione() {}
+	
+	public Spedizione(String prodotto, String fornitore, String filiale,int qta)
+	{
+		this.prodotto=prodotto;
+		this.fornitore=fornitore;
+		this.filiale=filiale;
+		this.qta=qta;
+	}
+	
 	public String getProdotto() {
 		return prodotto;
 	}

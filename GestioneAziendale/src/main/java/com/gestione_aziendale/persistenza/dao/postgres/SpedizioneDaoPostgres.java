@@ -116,4 +116,43 @@ public class SpedizioneDaoPostgres implements SpedizioneDao {
 		return spedizione;
 	}
 
+	@Override
+	public void insert(Spedizione spedizione) {
+		if (findByProduct(spedizione.getProdotto()) == null) {
+			String query = "INSERT INTO spedizioni VALUES (?, ?, ?, ?)";
+			
+			PreparedStatement st;
+			try {
+				st = conn.prepareStatement(query);
+				st.setString(1, spedizione.getProdotto());
+				st.setString(2, spedizione.getFornitore());
+				st.setString(3, spedizione.getFiliale());
+				st.setInt(4, spedizione.getQta());
+				
+				
+				st.executeUpdate();		
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}/*else {
+			String queryUpdate = "UPDATE utente SET nome=?, cognome = ?, password=?, ruolo=?, stipendio=? WHERE email=?";
+			PreparedStatement st;
+			try {
+				st = conn.prepareStatement(queryUpdate);
+			
+				st.setString(1, utente.getNome());
+				st.setString(2, utente.getCognome());
+				st.setString(3, utente.getPassword());
+				st.setString(4, utente.getRuolo());
+				st.setFloat(5, utente.getStipendio());
+				st.setString(6, utente.getEmail());
+				
+				st.executeUpdate();			
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}			
+		}	*/
+		return;
+	}
+
 }

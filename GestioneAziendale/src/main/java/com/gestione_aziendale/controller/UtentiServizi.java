@@ -72,4 +72,20 @@ public class UtentiServizi {
 			//System.out.println(HomeAziendaleServlet.s);
 			return spedizione;
 	}
+	
+	@PostMapping("/addSpedizione")
+			public void setSpedizione(HttpServletRequest req ) {
+			//Spedizione s = null;
+			String prodotto=req.getParameter("prodotto");
+			String filiale=req.getParameter("filiale");
+			String fornitore=req.getParameter("fornitore");
+			//int qta=Integer.parseInt(req.getParameter("qta"));
+			
+			System.out.println(prodotto + filiale + fornitore);
+			//s = new Spedizione(prodotto,fornitore,filiale,qta);
+			//DBManager.getInstance().getSpedizioneDao().insert(s);
+			//System.out.println(HomeAziendaleServlet.s);
+			
+	}
+	
 }

@@ -15,4 +15,6 @@ public interface SpedizioneDao {
 	public Spedizione findBySupplier(String id);
 	
 	public Spedizione findByBranch(String id);
+	
+	public void insert(Spedizione spedizione);
 }
