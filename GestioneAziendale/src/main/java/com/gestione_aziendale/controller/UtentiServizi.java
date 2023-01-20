@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gestione_aziendale.persistenza.DBManager;
+import com.gestione_aziendale.persistenza.model.Filiale;
 import com.gestione_aziendale.persistenza.model.Fornitore;
 import com.gestione_aziendale.persistenza.model.Utente;
 
@@ -46,6 +47,14 @@ public class UtentiServizi {
 			//System.out.println(HomeAziendaleServlet.s);
 			return fornitori;
 		
+	}
+	
+	@PostMapping("/getFiliali")
+	public List<Filiale> getFiliali(HttpServletRequest req ) {
+			
+			List<Filiale> filiali = DBManager.getInstance().getFilialeDao().findAll();
+			//System.out.println(HomeAziendaleServlet.s);
+			return filiali;
 	}
 	
 	
