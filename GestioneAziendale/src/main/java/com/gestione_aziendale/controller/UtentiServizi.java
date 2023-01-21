@@ -3,6 +3,7 @@ package com.gestione_aziendale.controller;
 import java.util.List;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.gestione_aziendale.persistenza.DBManager;
 import com.gestione_aziendale.persistenza.model.Filiale;
@@ -74,18 +75,8 @@ public class UtentiServizi {
 	}
 	
 	@PostMapping("/addSpedizione")
-			public void setSpedizione(HttpServletRequest req ) {
-			//Spedizione s = null;
-			String prodotto=req.getParameter("prodotto");
-			String filiale=req.getParameter("filiale");
-			String fornitore=req.getParameter("fornitore");
-			//int qta=Integer.parseInt(req.getParameter("qta"));
-			
-			System.out.println(prodotto + filiale + fornitore);
-			//s = new Spedizione(prodotto,fornitore,filiale,qta);
-			//DBManager.getInstance().getSpedizioneDao().insert(s);
-			//System.out.println(HomeAziendaleServlet.s);
-			
+	public void setSpedizione(@RequestBody String prodotto ) {
+	    System.out.println(prodotto);
 	}
 	
 }
