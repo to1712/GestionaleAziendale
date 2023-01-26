@@ -1,6 +1,9 @@
 package com.gestione_aziendale.controller;
 
 import java.io.IOException;
+
+import com.gestione_aziendale.persistenza.model.Utente;
+
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,13 +14,17 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet("/views")
 public class HomeAziendaleServlet extends HttpServlet {
-	
+	public static String s;
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
 		System.out.println(session.getId());
+		Utente u=(Utente) session.getAttribute("user");
+		s=u.getEmail();
 		resp.sendRedirect("views/welcome.html");
 	}
+	
+	
 	/*
 	@GetMapping("")
 	public String home(HttpServletRequest req, HttpServletResponse resp) throws IOException
