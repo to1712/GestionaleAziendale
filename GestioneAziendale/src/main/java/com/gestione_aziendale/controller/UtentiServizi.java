@@ -75,7 +75,11 @@ public class UtentiServizi {
 	}
 	
 	@PostMapping("/addSpedizione")
-	public void setSpedizione(@RequestBody String prodotto ) {
-	    System.out.println(prodotto);
+	public void setSpedizione(@RequestBody Spedizione spedizione ) {
+		System.out.println(spedizione.getFiliale());
+
+		 Spedizione s = new Spedizione(spedizione.getProdotto(),spedizione.getFornitore(),spedizione.getFiliale(),spedizione.getQta());
+
+		 DBManager.getInstance().getSpedizioneDao().insert(s);
 	}
 }
