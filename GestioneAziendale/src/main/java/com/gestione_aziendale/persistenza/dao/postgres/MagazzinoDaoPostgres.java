@@ -88,4 +88,35 @@ public class MagazzinoDaoPostgres implements MagazzinoDao {
 			}
 		return magazzino;
 	}
+
+	@Override
+	public void saveUpdate(Magazzino m) {
+		if(findByProduct(m.getId_prodotto())==null) {
+			String query= "INSERT INTO magazzino VALUES(?,?,?)";
+			try {
+				PreparedStatement st=conn.prepareStatement(query);
+				st.setString(1, m.getId_prodotto());
+				st.setString(2, m.getId_fornitore());
+				st.setInt(3, m.getQta());
+				
+				st.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		else {
+			String query="UPDATE magazzino SET qta=qta+? WHERE id_prodotto=? and id_fornitore=? ";
+			try {
+				PreparedStatement st=conn.prepareStatement(query);
+				st.setInt(1, m.getQta());
+				st.setString(2,m.getId_prodotto());
+				st.setString(3, m.getId_fornitore());
+				st.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }

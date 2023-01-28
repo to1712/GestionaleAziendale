@@ -4,7 +4,12 @@ public class Magazzino {
 	String id_prodotto;
 	String id_fornitore;
 	int qta;
-	
+	public Magazzino() {}
+	public Magazzino(String idP,String idF,int qta) {
+		this.id_prodotto=idP;
+		this.id_fornitore=idF;
+		this.qta=qta;
+	}
 	public String getId_prodotto() {
 		return id_prodotto;
 	}

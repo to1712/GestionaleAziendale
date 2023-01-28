@@ -9,6 +9,7 @@ import com.gestione_aziendale.persistenza.DBManager;
 import com.gestione_aziendale.persistenza.model.Filiale;
 import com.gestione_aziendale.persistenza.model.Fornitore;
 import com.gestione_aziendale.persistenza.model.Magazzino;
+import com.gestione_aziendale.persistenza.model.Prodotto;
 import com.gestione_aziendale.persistenza.model.Spedizione;
 import com.gestione_aziendale.persistenza.model.Utente;
 import jakarta.servlet.http.HttpServletRequest;
@@ -73,6 +74,13 @@ public class UtentiServizi {
 			//System.out.println(HomeAziendaleServlet.s);
 			return spedizione;
 	}
+	@PostMapping("/getProdotti")
+	public List<Prodotto> getProdotto(HttpServletRequest req ) {
+			
+			List<Prodotto> prodotto = DBManager.getInstance().getProdottoDao().findAll();
+			//System.out.println(HomeAziendaleServlet.s);
+			return prodotto;
+	}
 	
 	@PostMapping("/addSpedizione")
 	public void setSpedizione(@RequestBody Spedizione spedizione ) {
@@ -81,5 +89,10 @@ public class UtentiServizi {
 		 Spedizione s = new Spedizione(spedizione.getProdotto(),spedizione.getFornitore(),spedizione.getFiliale(),spedizione.getQta());
 
 		 DBManager.getInstance().getSpedizioneDao().insert(s);
+	}
+	@PostMapping("/addProdotto")
+	public void setProdotto(@RequestBody Magazzino magazzino) {
+		 Magazzino m = new Magazzino(magazzino.getId_prodotto(),magazzino.getId_fornitore(),magazzino.getQta());
+		 DBManager.getInstance().getMagazzinoDao().saveUpdate(m);
 	}
 }

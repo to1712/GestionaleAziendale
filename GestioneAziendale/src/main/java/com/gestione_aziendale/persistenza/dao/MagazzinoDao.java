@@ -11,4 +11,6 @@ public interface MagazzinoDao {
 	
 	public Magazzino findBySupplier(String id);
 	
+	public void saveUpdate(Magazzino m);
+	
 }
