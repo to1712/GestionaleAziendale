@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.gestione_aziendale.persistenza.dao.MagazzinoDao;
 import com.gestione_aziendale.persistenza.model.Magazzino;
+import com.gestione_aziendale.persistenza.model.Spedizione;
 
 public class MagazzinoDaoPostgres implements MagazzinoDao {
 	Connection conn;
@@ -117,6 +118,20 @@ public class MagazzinoDaoPostgres implements MagazzinoDao {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+	}
+	public void updateProdotto(Spedizione s) {
+		String query="UPDATE magazzino SET qta=qta-? WHERE id_prodotto=? and id_fornitore=?";
+		try {
+			PreparedStatement st=conn.prepareStatement(query);
+			st.setInt(1, s.getQta());
+			st.setString(2,s.getProdotto());
+			st.setString(3, s.getFornitore());
+			st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
 		}
 	}
 }

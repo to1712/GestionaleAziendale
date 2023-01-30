@@ -36,6 +36,7 @@ public class UtenteDaoPostgres implements UtenteDao {
 				utente.setPassword(rs.getString("password"));
 				utente.setRuolo(rs.getString("ruolo"));
 				utente.setStipendio(rs.getFloat("stipendio"));
+				utente.setSede(rs.getString("sede"));
 				utenti.add(utente);
 			}	
 		} catch (SQLException e) {
@@ -71,7 +72,7 @@ public class UtenteDaoPostgres implements UtenteDao {
 	@Override
 	public void saveOrUpdate(Utente utente) {
 		if (findByPrimaryKey(utente.getEmail()) == null) {
-			String queryInsert = "INSERT INTO utente VALUES (?, ?, ?, ?, ?)";
+			String queryInsert = "INSERT INTO utenti VALUES (?, ?, ?, ?, ?,?,?,?)";
 			
 			PreparedStatement st;
 			try {
@@ -82,13 +83,16 @@ public class UtenteDaoPostgres implements UtenteDao {
 				st.setString(4, utente.getPassword());
 				st.setString(5, utente.getRuolo());
 				st.setFloat(6, utente.getStipendio());
+				st.setString(7, "");
+				st.setString(8, utente.getSede());
+				
 				
 				st.executeUpdate();		
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}else {
-			String queryUpdate = "UPDATE utente SET nome=?, cognome = ?, password=?, ruolo=?, stipendio=? WHERE email=?";
+			String queryUpdate = "UPDATE utenti SET nome=?, cognome = ?, password=?, ruolo=?, stipendio=? WHERE email=?";
 			PreparedStatement st;
 			try {
 				st = conn.prepareStatement(queryUpdate);
@@ -108,11 +112,11 @@ public class UtenteDaoPostgres implements UtenteDao {
 	}
 
 	@Override
-	public void delete(Utente utente) {
-		String query = "DELETE FROM utente WHERE email=?";		
+	public void delete(String email) {
+		String query = "DELETE FROM utenti WHERE email=?";		
 		try {
 			PreparedStatement st = conn.prepareStatement(query);
-			st.setString(1, utente.getEmail());
+			st.setString(1, email);
 			st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

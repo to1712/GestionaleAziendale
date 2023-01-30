@@ -118,9 +118,8 @@ public class SpedizioneDaoPostgres implements SpedizioneDao {
 
 	@Override
 	public void insert(Spedizione spedizione) {
-		if (findByProduct(spedizione.getProdotto()) == null) {
-			String query = "INSERT INTO spedizioni VALUES (?, ?, ?, ?)";
 			
+			String query = "INSERT INTO spedizioni VALUES (?, ?, ?, ?)";
 			PreparedStatement st;
 			try {
 				st = conn.prepareStatement(query);
@@ -134,7 +133,7 @@ public class SpedizioneDaoPostgres implements SpedizioneDao {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}/*else {
+		/*else {
 			String queryUpdate = "UPDATE utente SET nome=?, cognome = ?, password=?, ruolo=?, stipendio=? WHERE email=?";
 			PreparedStatement st;
 			try {

@@ -8,7 +8,18 @@ public class Utente {
 	private String password;
 	private String ruolo;
 	private float stipendio;
-
+	private String sede;
+	
+	public Utente() {}
+	public Utente(String nome,String  cognome,String email, String password,String ruolo,String sede) {
+		this.nome=nome;
+		this.cognome=cognome;
+		this.email=email;
+		this.password=password;
+		this.ruolo=ruolo;
+		this.sede=sede;
+		
+	}
 	public String getNome() {
 		return nome;
 	}
@@ -44,5 +55,11 @@ public class Utente {
 	}
 	public void setStipendio(float stipendio) {
 		this.stipendio = stipendio;
+	}
+	public String getSede() {
+		return sede;
+	}
+	public void setSede(String sede) {
+		this.sede = sede;
 	}
 }

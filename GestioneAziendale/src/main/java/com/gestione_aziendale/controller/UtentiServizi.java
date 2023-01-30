@@ -87,12 +87,39 @@ public class UtentiServizi {
 		System.out.println(spedizione.getFiliale());
 
 		 Spedizione s = new Spedizione(spedizione.getProdotto(),spedizione.getFornitore(),spedizione.getFiliale(),spedizione.getQta());
-
 		 DBManager.getInstance().getSpedizioneDao().insert(s);
+		 DBManager.getInstance().getMagazzinoDao().updateProdotto(s);
 	}
 	@PostMapping("/addProdotto")
 	public void setProdotto(@RequestBody Magazzino magazzino) {
 		 Magazzino m = new Magazzino(magazzino.getId_prodotto(),magazzino.getId_fornitore(),magazzino.getQta());
 		 DBManager.getInstance().getMagazzinoDao().saveUpdate(m);
 	}
+	@PostMapping("/addDipendente")
+	public void setDipendente(@RequestBody Utente d) {
+		 System.out.println(d.getNome());
+		 Utente u=new Utente(d.getNome(),d.getCognome(),d.getEmail(),d.getPassword(),d.getRuolo(),d.getSede());
+		 System.out.println(u.getNome());
+		 DBManager.getInstance().getUtenteDao().saveOrUpdate(u);
+	}
+	@PostMapping("/deleteDipendente")
+	public void setDipendente(@RequestBody String email ) {
+		System.out.println(email);
+		 DBManager.getInstance().getUtenteDao().delete(email);
+	}
+	@PostMapping("/updateUtente")
+	public List<Utente> updateUtente(HttpServletRequest req ) {
+			
+			List<Utente> utenti=DBManager.getInstance().getUtenteDao().findAll();
+			//System.out.println(HomeAziendaleServlet.s);
+			return utenti;
+	}
+	@PostMapping("/updateMagazzino")
+	public List<Magazzino> updateMagazzino(HttpServletRequest req ) {
+			
+		List<Magazzino> magazzino = DBManager.getInstance().getMagazzinoDao().findAll();
+		//System.out.println(HomeAziendaleServlet.s);
+		return magazzino;
+	}
+	
 }
