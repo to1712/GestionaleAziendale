@@ -122,4 +122,20 @@ public class UtentiServizi {
 		return magazzino;
 	}
 	
+	@PostMapping("/nuovoStipendio")
+	public void nuovoStipendio(@RequestBody Utente utente) {
+		System.out.println(utente.getEmail());
+		DBManager.getInstance().getUtenteDao().updateStipendio(utente.getStipendio(),utente.getEmail());
+		//System.out.println(HomeAziendaleServlet.s);
+		
+	}
+	
+	@PostMapping("/addBilancio")
+	public void addBilancio(@RequestBody Filiale filiale) {
+		System.out.println(filiale.getId());
+		DBManager.getInstance().getFilialeDao().addBilancio(filiale.getId(),filiale.getBilancio());
+		//System.out.println(HomeAziendaleServlet.s);
+		
+	}
+	
 }

@@ -10,5 +10,7 @@ public interface FilialeDao {
 	public Filiale findByPrimaryKey(String id);
 	
 	public void delete(Filiale filiale);
+	
+	public void addBilancio(String id, int bilancio);
 }
 

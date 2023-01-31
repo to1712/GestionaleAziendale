@@ -123,4 +123,18 @@ public class UtenteDaoPostgres implements UtenteDao {
 			e.printStackTrace();
 		}
 	}
+	
+	@Override
+	public void updateStipendio(float stipendio,String email) {
+		String query = "UPDATE utenti SET stipendio=? WHERE email=?";		
+		try {
+			PreparedStatement st = conn.prepareStatement(query);
+			st.setFloat(1, stipendio);
+			st.setString(2, email);
+			st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 }

@@ -27,7 +27,7 @@ public class Filiale {
 	private float spese_ott;
 	private float spese_nov;
 	private float spese_dic;
-	private float bilancio;
+	private int bilancio;
 	
 	public String getId() {
 		return id;
@@ -185,10 +185,10 @@ public class Filiale {
 	public void setSpese_dic(float spese_dic) {
 		this.spese_dic = spese_dic;
 	}
-	public float getBilancio() {
+	public int getBilancio() {
 		return bilancio;
 	}
-	public void setBilancio(float bilancio) {
+	public void setBilancio(int bilancio) {
 		this.bilancio = bilancio;
 	}
 	

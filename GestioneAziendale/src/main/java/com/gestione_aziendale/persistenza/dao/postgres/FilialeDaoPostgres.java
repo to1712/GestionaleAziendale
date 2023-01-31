@@ -55,7 +55,7 @@ public class FilialeDaoPostgres implements FilialeDao {
 				filiale.setSpese_nov(rs.getFloat("spese_novembre"));
 				filiale.setSpese_dic(rs.getFloat("spese_dicembre"));
 				
-				filiale.setBilancio(rs.getFloat("bilancio"));
+				filiale.setBilancio(rs.getInt("bilancio"));
 				
 				filiali.add(filiale);
 			}	
@@ -106,7 +106,7 @@ public class FilialeDaoPostgres implements FilialeDao {
 				filiale.setSpese_nov(rs.getFloat("spese_novembre"));
 				filiale.setSpese_dic(rs.getFloat("spese_dicembre"));
 				
-				filiale.setBilancio(rs.getFloat("bilancio"));
+				filiale.setBilancio(rs.getInt("bilancio"));
 			}
 			
 		} catch (SQLException e) {
@@ -123,6 +123,20 @@ public class FilialeDaoPostgres implements FilialeDao {
 		try {
 			PreparedStatement st = conn.prepareStatement(query);
 			st.setString(1, filiale.getId());
+			st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
+	
+	@Override
+	public void addBilancio(String id, int bilancio) {
+		String query = "UPDATE filiali SET bilancio=? WHERE identificativo=?";		
+		try {
+			PreparedStatement st = conn.prepareStatement(query);
+			st.setInt(1, bilancio);
+			st.setString(2, id);
 			st.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
