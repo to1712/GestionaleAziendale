@@ -31,6 +31,7 @@ public class SpedizioneDaoPostgres implements SpedizioneDao {
 				spedizione.setFornitore(rs.getString("fornitore"));
 				spedizione.setFiliale(rs.getString("filiale"));
 				spedizione.setQta(rs.getInt("qta"));
+				spedizione.setData(rs.getString("data"));
 				
 				spedizioni.add(spedizione);
 			}
@@ -119,14 +120,15 @@ public class SpedizioneDaoPostgres implements SpedizioneDao {
 	@Override
 	public void insert(Spedizione spedizione) {
 			
-			String query = "INSERT INTO spedizioni VALUES (?, ?, ?, ?)";
+			String query = "INSERT INTO spedizioni VALUES (?, ?, ?, ?,?)";
 			PreparedStatement st;
 			try {
 				st = conn.prepareStatement(query);
 				st.setString(1, spedizione.getProdotto());
 				st.setString(2, spedizione.getFornitore());
-				st.setString(3, spedizione.getFiliale());
-				st.setInt(4, spedizione.getQta());
+				st.setString(5, spedizione.getFiliale());
+				st.setInt(3, spedizione.getQta());
+				st.setString(4, "");
 				
 				
 				st.executeUpdate();		

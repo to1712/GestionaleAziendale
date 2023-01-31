@@ -5,7 +5,16 @@ public class Spedizione {
 	String fornitore;
 	String filiale;
 	int qta;
+	String data;
 	
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
+	}
+
 	public Spedizione() {}
 	
 	public Spedizione(String prodotto, String fornitore, String filiale,int qta)
