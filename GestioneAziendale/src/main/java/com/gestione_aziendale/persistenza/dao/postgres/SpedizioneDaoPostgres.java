@@ -128,7 +128,7 @@ public class SpedizioneDaoPostgres implements SpedizioneDao {
 				st.setString(2, spedizione.getFornitore());
 				st.setString(5, spedizione.getFiliale());
 				st.setInt(3, spedizione.getQta());
-				st.setString(4, "");
+				st.setString(4, spedizione.getData());
 				
 				
 				st.executeUpdate();		

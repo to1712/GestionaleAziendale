@@ -15,4 +15,6 @@ public interface UtenteDao {
 	public void delete(String email);
 
 	void updateStipendio(float stipendio, String email);
+
+	void updateTelefono(String email, String telefono);
 }

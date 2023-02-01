@@ -23,7 +23,7 @@ public class UtenteDaoPostgres implements UtenteDao {
 	public List<Utente> findAll() {
 		
 		List<Utente> utenti = new ArrayList<Utente>();
-		String query = "SELECT * FROM utenti";
+		String query = "SELECT sede FROM utenti";
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(query);
@@ -37,8 +37,10 @@ public class UtenteDaoPostgres implements UtenteDao {
 				utente.setRuolo(rs.getString("ruolo"));
 				utente.setStipendio(rs.getFloat("stipendio"));
 				utente.setSede(rs.getString("sede"));
+				System.out.println(rs.getString("sede"));
 				utenti.add(utente);
 			}	
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -62,6 +64,8 @@ public class UtenteDaoPostgres implements UtenteDao {
 				utente.setPassword(rs.getString("password"));
 				utente.setRuolo(rs.getString("ruolo"));
 				utente.setStipendio(rs.getFloat("stipendio"));
+				utente.setTelefono(rs.getString("telefono"));
+				utente.setSede(rs.getString("sede"));
 			}	
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -130,6 +134,20 @@ public class UtenteDaoPostgres implements UtenteDao {
 		try {
 			PreparedStatement st = conn.prepareStatement(query);
 			st.setFloat(1, stipendio);
+			st.setString(2, email);
+			st.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@Override
+	public void updateTelefono(String email, String telefono) {
+		String query = "UPDATE utenti SET telefono=? WHERE email=?";		
+		try {
+			PreparedStatement st = conn.prepareStatement(query);
+			st.setString(1, telefono);
 			st.setString(2, email);
 			st.executeUpdate();
 		} catch (SQLException e) {

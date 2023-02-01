@@ -8,6 +8,7 @@ public class Utente {
 	private String password;
 	private String ruolo;
 	private float stipendio;
+	private String telefono;
 	private String sede;
 	
 	public Utente() {}
@@ -61,5 +62,11 @@ public class Utente {
 	}
 	public void setSede(String sede) {
 		this.sede = sede;
+	}
+	public String getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
 	}
 }

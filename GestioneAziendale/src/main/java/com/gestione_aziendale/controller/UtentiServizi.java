@@ -26,7 +26,7 @@ public class UtentiServizi {
 		if(req.getServletContext().getAttribute(sessionId)!=null) {
 			Utente utente= DBManager.getInstance().getUtenteDao().findByPrimaryKey(HomeAziendaleServlet.s);
 			//System.out.println(HomeAziendaleServlet.s);
-			System.out.println(utente.getEmail());
+			System.out.println(utente.getSede());
 			return utente;
 		}
 		return null;
@@ -86,7 +86,7 @@ public class UtentiServizi {
 	public void setSpedizione(@RequestBody Spedizione spedizione ) {
 		System.out.println(spedizione.getFiliale());
 
-		 Spedizione s = new Spedizione(spedizione.getProdotto(),spedizione.getFornitore(),spedizione.getFiliale(),spedizione.getQta());
+		 Spedizione s = new Spedizione(spedizione.getProdotto(),spedizione.getFornitore(),spedizione.getFiliale(),spedizione.getQta(),spedizione.getData());
 		 DBManager.getInstance().getSpedizioneDao().insert(s);
 		 DBManager.getInstance().getMagazzinoDao().updateProdotto(s);
 	}
@@ -134,6 +134,14 @@ public class UtentiServizi {
 	public void addBilancio(@RequestBody Filiale filiale) {
 		System.out.println(filiale.getId());
 		DBManager.getInstance().getFilialeDao().addBilancio(filiale.getId(),filiale.getBilancio());
+		//System.out.println(HomeAziendaleServlet.s);
+		
+	}
+	
+	@PostMapping("/addTelefono")
+	public void addTelefono(@RequestBody Utente utente) {
+		
+		DBManager.getInstance().getUtenteDao().updateTelefono(utente.getEmail(), utente.getTelefono());
 		//System.out.println(HomeAziendaleServlet.s);
 		
 	}

@@ -17,12 +17,13 @@ public class Spedizione {
 
 	public Spedizione() {}
 	
-	public Spedizione(String prodotto, String fornitore, String filiale,int qta)
+	public Spedizione(String prodotto, String fornitore, String filiale,int qta,String data)
 	{
 		this.prodotto=prodotto;
 		this.fornitore=fornitore;
 		this.filiale=filiale;
 		this.qta=qta;
+		this.data=data;
 	}
 	
 	public String getProdotto() {
