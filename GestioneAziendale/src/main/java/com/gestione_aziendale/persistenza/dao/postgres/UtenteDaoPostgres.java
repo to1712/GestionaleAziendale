@@ -23,7 +23,7 @@ public class UtenteDaoPostgres implements UtenteDao {
 	public List<Utente> findAll() {
 		
 		List<Utente> utenti = new ArrayList<Utente>();
-		String query = "SELECT sede FROM utenti";
+		String query = "SELECT * FROM utenti";
 		try {
 			Statement st = conn.createStatement();
 			ResultSet rs = st.executeQuery(query);
@@ -37,7 +37,6 @@ public class UtenteDaoPostgres implements UtenteDao {
 				utente.setRuolo(rs.getString("ruolo"));
 				utente.setStipendio(rs.getFloat("stipendio"));
 				utente.setSede(rs.getString("sede"));
-				System.out.println(rs.getString("sede"));
 				utenti.add(utente);
 			}	
 			

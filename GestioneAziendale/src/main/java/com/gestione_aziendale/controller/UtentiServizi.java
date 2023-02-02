@@ -13,6 +13,7 @@ import com.gestione_aziendale.persistenza.model.Prodotto;
 import com.gestione_aziendale.persistenza.model.Spedizione;
 import com.gestione_aziendale.persistenza.model.Utente;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 @RestController
 @CrossOrigin("http://localhost:4200")
@@ -22,128 +23,101 @@ public class UtentiServizi {
 	public Utente getUtente(HttpServletRequest req ) {
 		String [] sessionIdParam=req.getQueryString().split("&")[0].split("=");
 		String sessionId=sessionIdParam[1];
-		//System.out.println(session.getId());
+		
 		if(req.getServletContext().getAttribute(sessionId)!=null) {
-			Utente utente= DBManager.getInstance().getUtenteDao().findByPrimaryKey(HomeAziendaleServlet.s);
-			//System.out.println(HomeAziendaleServlet.s);
-			System.out.println(utente.getSede());
+			HttpSession session = (HttpSession) req.getServletContext().getAttribute(sessionId);
+			Utente u = (Utente) session.getAttribute("user");
+			Utente utente= DBManager.getInstance().getUtenteDao().findByPrimaryKey(u.getEmail());
 			return utente;
 		}
 		return null;
-		
 	}
 	
 	@PostMapping("/getUtenti")
-	public List<Utente> getUtenti(HttpServletRequest req ) {
-			
-			List<Utente> utenti=DBManager.getInstance().getUtenteDao().findAll();
-			//System.out.println(HomeAziendaleServlet.s);
-			return utenti;
-		
+	public List<Utente> getUtenti(HttpServletRequest req ) {	
+		List<Utente> utenti=DBManager.getInstance().getUtenteDao().findAll();
+		return utenti;	
 	}
 	
 	@PostMapping("/getFornitori")
-	public List<Fornitore> getFornitori(HttpServletRequest req ) {
-			
-			List<Fornitore> fornitori = DBManager.getInstance().getFornitoreDao().findAll();
-			//System.out.println(HomeAziendaleServlet.s);
-			return fornitori;
-		
+	public List<Fornitore> getFornitori(HttpServletRequest req ) {	
+		List<Fornitore> fornitori = DBManager.getInstance().getFornitoreDao().findAll();
+		return fornitori;	
 	}
 	
 	@PostMapping("/getFiliali")
-	public List<Filiale> getFiliali(HttpServletRequest req ) {
-			
-			List<Filiale> filiali = DBManager.getInstance().getFilialeDao().findAll();
-			//System.out.println(HomeAziendaleServlet.s);
-			return filiali;
+	public List<Filiale> getFiliali(HttpServletRequest req ) {	
+		List<Filiale> filiali = DBManager.getInstance().getFilialeDao().findAll();
+		return filiali;
 	}
 	
 	@PostMapping("/getMagazzino")
-	public List<Magazzino> getMagazzino(HttpServletRequest req ) {
-			
-			List<Magazzino> magazzino = DBManager.getInstance().getMagazzinoDao().findAll();
-			//System.out.println(HomeAziendaleServlet.s);
-			return magazzino;
+	public List<Magazzino> getMagazzino(HttpServletRequest req ) {	
+		List<Magazzino> magazzino = DBManager.getInstance().getMagazzinoDao().findAll();
+		return magazzino;
 	}
 	
 	@PostMapping("/getSpedizioni")
-	public List<Spedizione> getSpedizione(HttpServletRequest req ) {
-			
-			List<Spedizione> spedizione = DBManager.getInstance().getSpedizioneDao().findAll();
-			//System.out.println(HomeAziendaleServlet.s);
-			return spedizione;
+	public List<Spedizione> getSpedizione(HttpServletRequest req ) {		
+		List<Spedizione> spedizione = DBManager.getInstance().getSpedizioneDao().findAll();
+		return spedizione;
 	}
+	
 	@PostMapping("/getProdotti")
-	public List<Prodotto> getProdotto(HttpServletRequest req ) {
-			
-			List<Prodotto> prodotto = DBManager.getInstance().getProdottoDao().findAll();
-			//System.out.println(HomeAziendaleServlet.s);
-			return prodotto;
+	public List<Prodotto> getProdotto(HttpServletRequest req ) {	
+		List<Prodotto> prodotto = DBManager.getInstance().getProdottoDao().findAll();
+		return prodotto;
 	}
 	
 	@PostMapping("/addSpedizione")
 	public void setSpedizione(@RequestBody Spedizione spedizione ) {
-		System.out.println(spedizione.getFiliale());
-
 		 Spedizione s = new Spedizione(spedizione.getProdotto(),spedizione.getFornitore(),spedizione.getFiliale(),spedizione.getQta(),spedizione.getData());
 		 DBManager.getInstance().getSpedizioneDao().insert(s);
 		 DBManager.getInstance().getMagazzinoDao().updateProdotto(s);
 	}
+	
 	@PostMapping("/addProdotto")
 	public void setProdotto(@RequestBody Magazzino magazzino) {
 		 Magazzino m = new Magazzino(magazzino.getId_prodotto(),magazzino.getId_fornitore(),magazzino.getQta());
 		 DBManager.getInstance().getMagazzinoDao().saveUpdate(m);
 	}
+	
 	@PostMapping("/addDipendente")
 	public void setDipendente(@RequestBody Utente d) {
-		 System.out.println(d.getNome());
 		 Utente u=new Utente(d.getNome(),d.getCognome(),d.getEmail(),d.getPassword(),d.getRuolo(),d.getSede());
-		 System.out.println(u.getNome());
 		 DBManager.getInstance().getUtenteDao().saveOrUpdate(u);
 	}
+	
 	@PostMapping("/deleteDipendente")
 	public void setDipendente(@RequestBody String email ) {
-		System.out.println(email);
 		 DBManager.getInstance().getUtenteDao().delete(email);
 	}
+	
 	@PostMapping("/updateUtente")
-	public List<Utente> updateUtente(HttpServletRequest req ) {
-			
-			List<Utente> utenti=DBManager.getInstance().getUtenteDao().findAll();
-			//System.out.println(HomeAziendaleServlet.s);
-			return utenti;
+	public List<Utente> updateUtente(HttpServletRequest req ) {		
+		List<Utente> utenti=DBManager.getInstance().getUtenteDao().findAll();
+		return utenti;
 	}
+	
 	@PostMapping("/updateMagazzino")
-	public List<Magazzino> updateMagazzino(HttpServletRequest req ) {
-			
+	public List<Magazzino> updateMagazzino(HttpServletRequest req ) {		
 		List<Magazzino> magazzino = DBManager.getInstance().getMagazzinoDao().findAll();
-		//System.out.println(HomeAziendaleServlet.s);
 		return magazzino;
 	}
 	
 	@PostMapping("/nuovoStipendio")
 	public void nuovoStipendio(@RequestBody Utente utente) {
-		System.out.println(utente.getEmail());
 		DBManager.getInstance().getUtenteDao().updateStipendio(utente.getStipendio(),utente.getEmail());
-		//System.out.println(HomeAziendaleServlet.s);
-		
 	}
 	
 	@PostMapping("/addBilancio")
 	public void addBilancio(@RequestBody Filiale filiale) {
-		System.out.println(filiale.getId());
-		DBManager.getInstance().getFilialeDao().addBilancio(filiale.getId(),filiale.getBilancio());
-		//System.out.println(HomeAziendaleServlet.s);
-		
+		DBManager.getInstance().getFilialeDao().addBilancio(filiale.getId(),filiale.getBilancio());	
 	}
 	
 	@PostMapping("/addTelefono")
 	public void addTelefono(@RequestBody Utente utente) {
-		
-		DBManager.getInstance().getUtenteDao().updateTelefono(utente.getEmail(), utente.getTelefono());
-		//System.out.println(HomeAziendaleServlet.s);
-		
+		DBManager.getInstance().getUtenteDao().updateTelefono(utente.getEmail(), utente.getTelefono());		
 	}
 	
 }
