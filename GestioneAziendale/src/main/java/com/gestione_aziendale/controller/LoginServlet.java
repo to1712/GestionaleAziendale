@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 @RestController
 public class LoginServlet {
 	@PostMapping("/doLogin")
-	public void doLogin(HttpServletRequest req, HttpServletResponse resp, String email, String password) throws IOException, ServletException
+	public boolean doLogin(HttpServletRequest req, HttpServletResponse resp, String email, String password) throws IOException, ServletException
 	{
 		UtenteDao udao = DBManager.getInstance().getUtenteDao();
 		Utente utente = udao.findByPrimaryKey(email);
@@ -37,10 +37,8 @@ public class LoginServlet {
 			}
 		}
 		
-		
-		if(logged)
-			resp.sendRedirect("/views");
-		return;
+				
+        return logged;
 		
 		
 	}

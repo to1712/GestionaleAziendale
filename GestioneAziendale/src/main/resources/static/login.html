@@ -10,7 +10,7 @@
 <div class="container">
 	<div class="screen">
 		<div class="screen__content">
-			<form class="login" action="doLogin" method="post">
+			<form id="form" class="login" action="doLogin" method="post">
 			<p id="errorMessage"></p>
 				<div class="login__field">
 					<i class="login__icon fas fa-user"></i>
@@ -20,7 +20,7 @@
 					<i class="login__icon fas fa-lock"></i>
 					<input type="password" class="login__input" placeholder="Password" id="password" name = "password">
 				</div>
-					<button type="submit" class="button login__submit" onClick="validateForm()">
+					<button type="submit" id="invia" class="button login__submit" onClick="validateForm()">
 						Login
 	  					<i class="button__icon fas fa-chevron-right"></i>
 					</button>	
